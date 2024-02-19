@@ -85,7 +85,7 @@ const Signup = () => {
               </div>
 
               <p className="mt-5 text-textColor text-center">Already have an account?
-                <Link to='/register' className="text-primaryColor font-medium ml-1">Login</Link></p>
+                <Link to='/login' className="text-primaryColor font-medium ml-1">Login</Link></p>
             </form>
           </div>
         </div>
