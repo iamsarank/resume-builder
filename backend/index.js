@@ -7,15 +7,15 @@ import authRoute from './Routes/auth.js'
 
 dotenv.config()
 
-const app = express();
-const port = process.env.PORT || 8000;
+const app = express()
+const port = process.env.PORT || 8000
 
 const corsOptions = {
-    origin: true,
-};
+    origin: true
+}
 
 app.get('/', (req, res) => {
-    res.send("Api is working");
+    res.send('API is working')
 });
 
 //database connection
@@ -34,10 +34,10 @@ const connectDB = async () => {
 
 
 //middleware
-app.use(express.json())
-app.use(cookieParser())
-app.use(cors(corsOptions))
-app.use('api/v1/auth', authRoute);
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors(corsOptions));
+app.use('/api/v1/auth', authRoute)
 
 app.listen(port, () => {
     connectDB();
