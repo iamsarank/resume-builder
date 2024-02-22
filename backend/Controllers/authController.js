@@ -10,14 +10,13 @@ const generateToken = user => {
 
 export const register = async (req, res) => {
     const { email, password, name, photo, gender } = req.body
+
     try {
         let user = null
         user = await User.findOne({ email });
-
         if (user) {
-            return res.status(400).json({ message: "User already exist" })
+            return res.status(400).json({ message: 'User already exist' })
         }
-
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(password, salt)
 
@@ -26,12 +25,13 @@ export const register = async (req, res) => {
             email,
             password: hashPassword,
             photo,
-            gender
+            gender,
         })
         await user.save()
         res.status(200).json({ success: true, message: 'User successfully created' })
 
     } catch (err) {
+        
         res.status(500).json({ success: false, message: 'Internal server error, Try again' })
     }
 }
