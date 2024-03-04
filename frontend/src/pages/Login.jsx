@@ -39,7 +39,7 @@ const Login = () => {
         payload: {
           user: result.data,
           token: result.token,
-          role: result.role,
+          //email: result.email,
         },
       });
       console.log(result,"login data");

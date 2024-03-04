@@ -24,6 +24,9 @@
   .Toastify__toast {
     z-index: 3 !important;
   }
+  .box__shadows__1{
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  }
 
   @media only screen and (max-width: 768px) {
     .navigation {
