@@ -2,11 +2,17 @@ import React, { useContext, useState } from "react";
 import userImg from '../../assets/images/doctor-img01.png';
 import { authContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../components/Loader/Loading'
+import Error from '../../components/Error/Error'
+import useGetProfile from '../../hooks/useFetchData'
+import { BASE_URL } from '../../config';
 
 import Profile from "./Profile";
 import UserDetails from "../../pages/Users/UserDetails";
 
 const MyAccount = () => {
+  const {data, loading, error} = useGetProfile(`${BASE_URL}/users/profile/me`)
+  const [tab, setTab] = useState('userdetails')
 
   const { dispatch } = useContext(authContext)
   const navigate = useNavigate()
@@ -19,6 +25,8 @@ const MyAccount = () => {
   return (
     <section>
       <div className="md:max-w-[1170px] lg:max-w-[1350px] px-5 mx-auto">
+      {loading && !error && <Loader />}
+        {error && !loading && <Error />}
         <div className="grid md:grid-cols-2 gap-10">
           <div className="py-[30px] px-[30px] rounded-md">
             <div className="flex items-center justify-start">
@@ -42,7 +50,10 @@ const MyAccount = () => {
           <div className="grid">
             <div className="flex flex-row gap-5 text-[25px] justify-end pr-[55px]">
               <div className="cursor-pointer">
-                <img width="30" height="30" src="https://img.icons8.com/color/48/admin-settings-male.png" alt="admin-settings-male" />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/user.png" alt="user" onClick={() => setTab("userdetails")} />
+              </div>
+              <div className="cursor-pointer">
+                <img width="30" height="30" src="https://img.icons8.com/color/48/admin-settings-male.png" alt="admin-settings-male" onClick={() => setTab("settings")} />
               </div>
               <div className="cursor-pointer">
                 <img className="pt-[2px]" width="25" height="25" src="https://img.icons8.com/external-others-bomsymbols-/91/external-electrical-flat-02-digital-design-others-bomsymbols-.png" alt="external-electrical-flat-02-digital-design-others-bomsymbols-"
@@ -81,7 +92,7 @@ const MyAccount = () => {
               </div>
 
               <div className="cursor-pointer">
-              <img width="30" height="30" src="https://img.icons8.com/flat-round/64/downloading-updates--v1.png" alt="downloading-updates--v1"/>
+                <img width="30" height="30" src="https://img.icons8.com/flat-round/64/downloading-updates--v1.png" alt="downloading-updates--v1" />
               </div>
 
             </div>
@@ -89,7 +100,8 @@ const MyAccount = () => {
         </div>
       </div>
       <div className="md:max-w-[1170px] lg:max-w-[1350px] px-5 mx-auto">
-      <UserDetails />
+        {tab === 'userdetails' && <UserDetails />}
+        {tab === 'settings' && <Profile />}
       </div>
 
     </section>
