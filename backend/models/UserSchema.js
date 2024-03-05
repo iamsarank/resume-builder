@@ -7,9 +7,13 @@ const UserSchema = new mongoose.Schema({
     phone: { type: Number },
     photo: { type: String },
     gender: { type: String, enum: ["male", "female", "other"] },
-    website: { type: String },
     about: { type: String },
     specialization: { type: String },
+    website: { type: String },
+    linkedIn: { type: String },
+    dribbble: { type: String },
+    github: { type: String },
+    twitter: { type: String },
     qualifications: {
         type: Array,
     },
@@ -22,9 +26,7 @@ const UserSchema = new mongoose.Schema({
     skills: {
         type: Array
     },
-    sociallinks: {
-        type: Array
-    }
+
 });
 
 export default mongoose.model("User", UserSchema);
