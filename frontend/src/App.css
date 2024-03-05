@@ -1,16 +1,16 @@
   @import url('https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&display=swap');
 
-  *{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  body{
+  body {
     font-family: 'Amiko', sans-serif;
   }
 
-  .sticky__header{
+  .sticky__header {
     width: 100%;
     height: 80px;
     line-height: 80px;
@@ -21,11 +21,18 @@
 
     box-shadow: 3px 3px -8px 3px #ddd;
   }
+
   .Toastify__toast {
     z-index: 3 !important;
   }
-  .box__shadows__1{
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+
+  .box__shadows__1 {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  }
+
+  .box__shadows__2 {
+    box-shadow: rgba(0, 0, 0, 0.15) -4px 2px 11px -5px;
+    border-radius: 25px;
   }
 
   @media only screen and (max-width: 768px) {
@@ -53,7 +60,8 @@
       align-items: center;
       line-height: 30px;
     }
-    .show__menu{
+
+    .show__menu {
       display: block;
     }
   }
